@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Animal Background Selfie</title>
+
+    <!-- A-Frame -->
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+
+    <!-- MindAR Face -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script>
+
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a-scene
+      mindar-face
+      embedded
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: false">
+
+      <a-assets>
+        <img id="bg" src="background.jpg">
+      </a-assets>
+
+      <!-- Background scene -->
+      <a-image
+        src="#bg"
+        position="0 0 -2"
+        width="4"
+        height="2.25">
+      </a-image>
+
+      <!-- Camera -->
+      <a-camera active="false"></a-camera>
+
+    </a-scene>
+  </body>
+</html>
