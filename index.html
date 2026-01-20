@@ -12,12 +12,13 @@
       overflow: hidden;
     }
 
-    /* Background */
+    /* Animal image (background) */
     body {
-      background: url('background.jpg') center center / cover no-repeat;
+      background: url('background.jpg') center center / contain no-repeat;
+      background-color: black;
     }
 
-    /* Camera */
+    /* Camera feed */
     video {
       position: fixed;
       top: 0;
@@ -26,12 +27,14 @@
       height: 100vh;
       object-fit: cover;
       z-index: 10;
-      opacity: 1; /* FULL visibility */
+      opacity: 0.75; /* adjust between 0.6–0.8 */
     }
   </style>
 </head>
+
 <body>
 
+  <!-- Camera -->
   <video id="camera" autoplay muted playsinline></video>
 
   <script>
@@ -43,13 +46,14 @@
     })
     .then(stream => {
       video.srcObject = stream;
-      video.play(); // IMPORTANT
+      video.play();
     })
     .catch(err => {
-      alert("Camera access was blocked.");
+      alert("Camera access was blocked. Please allow camera.");
       console.error(err);
     });
   </script>
 
 </body>
 </html>
+
