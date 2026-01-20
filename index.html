@@ -1,40 +1,42 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Animal Background Selfie</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Animal Background Selfie</title>
 
-    <!-- A-Frame -->
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <!-- A-Frame -->
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
 
-    <!-- MindAR Face -->
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script>
+  <!-- MindAR Face -->
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script>
 
-    <style>
-      body {
-        margin: 0;
-        overflow: hidden;
-      }
-    </style>
-  </head>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+  </style>
+</head>
 
-  <body>
-    <a-scene
-      mindar-face
-      embedded
-      vr-mode-ui="enabled: false"
-      device-orientation-permission-ui="enabled: false">
+<body>
+  <a-scene mindar-face embedded vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
 
-      <a-assets>
-        <img id="bg" src="background.jpg">
-      </a-assets>
+    <!-- Assets -->
+    <a-assets>
+      <!-- Make sure this image is in the same folder as index.html -->
+      <img id="bg" src="background.jpg">
+    </a-assets>
 
-      <a-sky src="#bg"></a-sky>
+    <!-- Background -->
+    <a-sky src="#bg"></a-sky>
 
+    <!-- MindAR Camera -->
+    <a-camera mindar-face-camera></a-camera>
 
-      <!-- Camera -->
-      <a-camera active="false"></a-camera>
+    <!-- Optional: You can add AR objects here if you want animal masks or effects -->
+    <!-- Example: <a-box position="0 0 -1" color="red"></a-box> -->
 
-    </a-scene>
-  </body>
+  </a-scene>
+</body>
 </html>
