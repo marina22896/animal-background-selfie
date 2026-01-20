@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Animal Background Selfie</title>
+  <title>Animal Selfie</title>
 
   <style>
     html, body {
@@ -10,15 +10,10 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
+      background: black;
     }
 
-    /* Animal image (background) */
-    body {
-      background: url('background.jpg') center center / contain no-repeat;
-      background-color: black;
-    }
-
-    /* Camera feed */
+    /* Camera */
     video {
       position: fixed;
       top: 0;
@@ -26,16 +21,26 @@
       width: 100vw;
       height: 100vh;
       object-fit: cover;
-      z-index: 10;
-      opacity: 0.75; /* adjust between 0.6–0.8 */
+      z-index: 1;
+    }
+
+    /* Animal sticker */
+    img {
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 220px;
+      z-index: 2;
+      pointer-events: none;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Camera -->
   <video id="camera" autoplay muted playsinline></video>
+  <img src="animal.png" alt="animal">
 
   <script>
     const video = document.getElementById('camera');
@@ -49,11 +54,10 @@
       video.play();
     })
     .catch(err => {
-      alert("Camera access was blocked. Please allow camera.");
+      alert("Camera access is required");
       console.error(err);
     });
   </script>
 
 </body>
 </html>
-
