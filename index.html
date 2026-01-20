@@ -10,10 +10,10 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background: black;
+      background: black; /* fallback */
     }
 
-    /* Camera */
+    /* Camera feed */
     video {
       position: fixed;
       top: 0;
@@ -24,13 +24,14 @@
       z-index: 1;
     }
 
-    /* Animal sticker */
+    /* Animal overlay starting from bottom */
     img {
       position: fixed;
-      top: 20%;
+      bottom: 0;          /* start from the bottom */
       left: 50%;
       transform: translateX(-50%);
-      width: 220px;
+      width: 80%;         /* make it large (adjust as needed) */
+      max-width: 800px;   /* optional max width */
       z-index: 2;
       pointer-events: none;
     }
@@ -39,8 +40,11 @@
 
 <body>
 
+  <!-- Camera -->
   <video id="camera" autoplay muted playsinline></video>
-  <img src="animal.png" alt="animal">
+
+  <!-- Animal PNG overlay -->
+  <img src="animal.png" alt="animal overlay">
 
   <script>
     const video = document.getElementById('camera');
