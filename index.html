@@ -52,4 +52,31 @@
             video.play();
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
-            requestAnimationFrame(drawFa
+            requestAnimationFrame(drawFaces);
+          };
+        })
+        .catch(err => {
+          alert("Please allow camera access.");
+          console.error(err);
+        });
+    }
+
+    async function drawFaces() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Detect all faces
+      const detections = await faceapi.detectAllFaces(
+        video, new faceapi.TinyFaceDetectorOptions()
+      );
+
+      // Draw each face on top of background
+      detections.forEach(det => {
+        const { x, y, width, height } = det.box;
+        ctx.drawImage(video, x, y, width, height, x, y, width, height);
+      });
+
+      requestAnimationFrame(drawFaces);
+    }
+  </script>
+</body>
+</html>
